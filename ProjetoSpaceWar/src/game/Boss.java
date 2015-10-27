@@ -3,6 +3,8 @@ package game;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
@@ -13,6 +15,7 @@ public class Boss {
 	private double y;
 	private int altura;
 	private int largura;
+
 	private int vidaBoss;
 	
 	private boolean isVisivel;
@@ -24,7 +27,7 @@ public class Boss {
 	
 	private static int contador = 0;
 	
-	public Boss(int x, int y){
+	public Boss(double x, double y){
 		
 		this.x = x;
 		this.y = y;
@@ -60,8 +63,9 @@ public class Boss {
 	}
 	
 	public void Baixo() {	
-		if (this.y == 600) {
+		if (this.y > 600) {
 			this.y = COMPRIMENTO_TELA;
+			this.setVisivel(false);
 		}
 		else {
 			this.y += VELOCIDADE_BOSS; 
@@ -77,6 +81,22 @@ public class Boss {
 			this.y -= VELOCIDADE_BOSS; 
 		}
 		
+	}
+	
+	public int getAltura() {
+		return altura;
+	}
+	
+	public void setAltura(int altura) {
+		this.altura = altura;
+	}
+	
+	public int getLargura() {
+		return largura;
+	}
+	
+	public void setLargura(int largura) {
+		this.largura = largura;
 	}
 	
 	public boolean isVisivel() {
